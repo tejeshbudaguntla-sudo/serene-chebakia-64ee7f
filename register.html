@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B5K Bank - Register</title>
+<link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f6ff;
+        }
+
+        header {
+            background: #003b7a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .register-box {
+            width: 90%;
+            max-width: 450px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .register-box h2 {
+            text-align: center;
+            color: #003b7a;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .register-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            background: #198754;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .register-btn:hover {
+            background: #146c43;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back a {
+            color: #003b7a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🏦 B5K Bank</h1>
+</header>
+
+<div class="register-box">
+
+    <h2>Create New Account</h2>
+
+    <form onsubmit="createAccount(event)">
+
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your full name" required>
+
+        <label>Mobile Number</label>
+        <input type="tel" placeholder="Enter mobile number" required>
+
+        <label>Email</label>
+        <input type="email" placeholder="Enter email address" required>
+
+        <label>Date of Birth</label>
+        <input type="date" required>
+
+        <label>Username</label>
+        <input type="text" placeholder="Create username" required>
+
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Create password" required>
+
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+
+        <button type="submit" class="register-btn">
+            Create Account
+        </button>
+
+    </form>
+
+    <div class="back">
+        <a href="login.html">Already have an account? Login</a>
+    </div>
+
+</div>
+
+<script>
+function createAccount(event) {
+    event.preventDefault();
+
+    const form = event.target;
+
+    const fullName = form.querySelector(
+        'input[placeholder="Enter your full name"]'
+    ).value.trim();
+
+    const mobile = form.querySelector(
+        'input[placeholder="Enter mobile number"]'
+    ).value.trim();
+
+    const email = form.querySelector(
+        'input[placeholder="Enter email address"]'
+    ).value.trim();
+
+    const dateOfBirth = form.querySelector(
+        'input[type="date"]'
+    ).value;
+
+    const username = form.querySelector(
+        'input[placeholder="Create username"]'
+    ).value.trim().toLowerCase();
+
+    const password = document.getElementById(
+        "password"
+    ).value;
+
+    const confirmPassword = document.getElementById(
+        "confirmPassword"
+    ).value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    const accounts = JSON.parse(
+        localStorage.getItem("demoAccounts") || "[]"
+    );
+
+    if (accounts.some(account => account.username === username)) {
+        alert("Username already exists. Choose another!");
+        return;
+    }
+
+    const accountNumber = "B5K" + Math.floor(
+    1000000000 + Math.random() * 9000000000
+).toString();
+
+accounts.push({
+    fullName,
+    mobile,
+    email,
+    dateOfBirth,
+    username,
+    password,
+    accountNumber
+});
+    });
+
+    localStorage.setItem(
+        "demoAccounts",
+        JSON.stringify(accounts)
+    );
+
+    alert("Demo account created successfully!");
+
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
+
+</body>
+</html>

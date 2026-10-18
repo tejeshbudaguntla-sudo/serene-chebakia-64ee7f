@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B5K Bank - Transactions</title>
+<link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            padding: 25px 15px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #123c69;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .transaction-box {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px #ccc;
+            overflow: hidden;
+        }
+
+        .transaction {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .transaction:last-child {
+            border-bottom: none;
+        }
+
+        .details h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .details p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .credit {
+            color: green;
+            font-weight: bold;
+        }
+
+        .debit {
+            color: red;
+            font-weight: bold;
+        }
+
+        .back {
+            display: block;
+            width: fit-content;
+            margin: 25px auto;
+            background: #123c69;
+            color: white;
+            padding: 11px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📄 Transaction History</h1>
+
+        <p class="subtitle">
+            Your recent banking transactions
+        </p>
+
+        <div class="transaction-box">
+
+            <div id="transactionList"></div>
+
+<script>
+    const lastTransaction = localStorage.getItem("lastTransaction");
+
+    if (lastTransaction) {
+        document.getElementById("transactionList").innerHTML =
+            "<div class='transaction'>" + lastTransaction + "</div>";
+    }
+</script>
+        </div>
+
+        <a href="dashboard.html" class="back">
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+</body>
+</html>

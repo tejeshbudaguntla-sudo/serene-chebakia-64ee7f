@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B5K Bank - Money Transfer</title>
+<link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f6ff;
+        }
+
+        header {
+            background: #003b7a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .box {
+            width: 90%;
+            max-width: 500px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            color: #003b7a;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            background: #003b7a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #003b7a;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🏦 B5K Bank</h1>
+</header>
+
+<div class="box">
+
+    <h2>💸 Money Transfer</h2>
+
+    <form onsubmit="transferMoney(event)">
+
+        <label>Receiver Name</label>
+        <input type="text" placeholder="Enter receiver name" required>
+
+        <label>Account Number</label>
+        <input type="text" placeholder="Enter account number" required>
+
+        <label>IFSC Code</label>
+        <input type="text" placeholder="Enter IFSC code" required>
+
+        <label>Amount (₹)</label>
+        <input type="number" id="amount" placeholder="Enter amount" required>
+
+        <button type="submit">Transfer Money</button>
+
+    </form>
+
+    <a href="dashboard.html" class="back">← Back to Dashboard</a>
+
+</div>
+
+<script>
+function transferMoney(event) {
+    event.preventDefault();
+
+    const amount = Number(document.getElementById("amount").value);
+
+    let balance = Number(localStorage.getItem("balance"));
+
+    if (isNaN(balance)) {
+        balance = 25000;
+    }
+
+    if (amount <= 0) {
+        alert("Please enter a valid amount ❌");
+        return;
+    }
+
+    if (amount > balance) {
+        alert("Insufficient balance ❌");
+        return;
+    }
+
+ balance = balance - amount;
+
+localStorage.setItem("lastTransaction", "Money Transfer - ₹" + amount);
+
+    localStorage.setItem("balance", balance);
+
+    alert("Demo transfer successful! 💸");
+
+    window.location.href = "dashboard.html";
+}
+</script>
+
+</body>
+</html>

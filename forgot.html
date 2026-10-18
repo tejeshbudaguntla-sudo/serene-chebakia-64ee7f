@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>B5K Bank - Forgot Password</title>
+<link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 15px;
+            background: #f4f7fb;
+        }
+
+        .box {
+            max-width: 430px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px #ccc;
+        }
+
+        h1 {
+            text-align: center;
+            color: #123c69;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: #123c69;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 17px;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #123c69;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>🔐 Forgot Password</h1>
+
+        <p class="subtitle">
+            Enter your registered details
+        </p>
+
+        <form onsubmit="resetPassword(event)">
+
+            <label>Username</label>
+
+            <input
+                type="text"
+                placeholder="Enter username"
+                required
+            >
+
+            <label>Mobile Number</label>
+
+            <input
+                type="tel"
+                placeholder="Enter mobile number"
+                required
+            >
+
+            <button type="submit">
+                Reset Password
+            </button>
+
+        </form>
+
+        <a href="login.html" class="back">
+            ← Back to Login
+        </a>
+
+    </div>
+
+    <script>
+        function resetPassword(event) {
+
+            event.preventDefault();
+
+            alert("Demo password reset request submitted! 🔐");
+
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+
+</html>

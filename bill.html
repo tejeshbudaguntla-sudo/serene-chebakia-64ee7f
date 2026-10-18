@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B5K Bank - Bill Payment</title>
+<link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f6ff;
+        }
+
+        header {
+            background: #003b7a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .box {
+            width: 90%;
+            max-width: 500px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            color: #003b7a;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            background: #003b7a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #003b7a;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🏦 B5K Bank</h1>
+</header>
+
+<div class="box">
+
+    <h2>💳 Bill Payment</h2>
+
+    <form onsubmit="payBill(event)">
+
+        <label>Bill Type</label>
+        <select required>
+            <option value="">Select Bill Type</option>
+            <option>Electricity</option>
+            <option>Mobile Recharge</option>
+            <option>Internet</option>
+            <option>Water</option>
+        </select>
+
+        <label>Consumer / Mobile Number</label>
+        <input type="text" placeholder="Enter number" required>
+
+        <label>Amount (₹)</label>
+        <input type="number" id="amount" placeholder="Enter amount" required>
+
+        <button type="submit">Pay Bill</button>
+
+    </form>
+
+    <a href="dashboard.html" class="back">← Back to Dashboard</a>
+
+</div>
+
+<script>
+
+function payBill(event) {
+
+    event.preventDefault();
+
+    const amount = Number(document.getElementById("amount").value);
+
+    let balance = Number(localStorage.getItem("balance"));
+
+    if (isNaN(balance)) {
+        balance = 25000;
+    }
+
+    if (amount <= 0) {
+        alert("Please enter a valid amount ❌");
+        return;
+    }
+
+    if (amount > balance) {
+        alert("Insufficient balance ❌");
+        return;
+    }
+
+    balance = balance - amount;
+
+localStorage.setItem("lastTransaction", "Bill Payment - ₹" + amount);
+
+    localStorage.setItem("balance", balance);
+
+    alert("Demo bill payment successful! 💳");
+
+    window.location.href = "dashboard.html";
+}
+
+</script>
+
+</body>
+</html>

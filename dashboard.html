@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B5K Bank - Dashboard</title>
+<link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+        }
+
+        header {
+            background: #123c69;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            font-size: 22px;
+        }
+
+        .logout {
+            background: white;
+            color: #123c69;
+            padding: 8px 14px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .container {
+            padding: 25px 15px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        <h2>Welcome, <span id="customerName">Customer</span>!</h2> {
+            margin-bottom: 20px;
+        }
+
+        .balance {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px #ccc;
+            margin-bottom: 25px;
+        }
+
+        .balance h3 {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .amount {
+            font-size: 32px;
+            color: #123c69;
+            font-weight: bold;
+        }
+
+        .account {
+            margin-top: 10px;
+            color: #666;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px #ccc;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #123c69;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            background: #123c69;
+            color: white;
+            padding: 9px 15px;
+            border-radius: 5px;
+        }
+
+        .transactions {
+            background: white;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px #ccc;
+        }
+
+        .transactions h2 {
+            color: #123c69;
+            margin-bottom: 15px;
+        }
+
+        .transaction {
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .credit {
+            color: green;
+        }
+
+        .debit {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>🏦 B5K Bank</h2>
+      <a href="login.html" class="logout" onclick="logout()">Logout</a>
+    </header>
+
+    <div class="container">
+
+        <div class="welcome">
+            <h1>Welcome, <span id="customerName">Customer</span>! 👋</h1>
+            <p>Here's your account overview.</p>
+        </div>
+
+        <div class="balance">
+            <h3>Available Balance</h3>
+            <div class="amount"></div></div><span id="balance">₹25,000</span</div>
+            <p class="account">Account Number: XXXX XXXX 4582</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>💸 Money Transfer</h3>
+                <p>Send money to another account.</p>
+                <a href="transfer.html">Transfer</a>
+            </div>
+
+            <div class="card">
+                <h3>💳 Bill Payment</h3
+                <p>Pay your bills online.</p>
+
+<a href="bill.html">Pay Bill</a>
+
+</div>
+
+<div class="card">
+    <h3>📄 Transactions</h3>
+    <p>View your transaction history.</p>
+    <a href="transactions.html">View</a>
+</div>
+
+<div class="card">
+    <h3>👤 Profile</h3>
+    <p>Manage your account details.</p>
+    <a href="profile.html">Profile</a>
+</div>
+
+</div>
+
+<div class="transactions" id="transactions">
+
+    <h2>Recent Transactions</h2>
+
+    <div class="transaction">
+        <span>Salary Credit</span>
+        <span class="credit">+ ₹15,000</span>
+    </div>
+
+    <div class="transaction">
+        <span>Electricity Bill</span>
+        <span class="debit">- ₹1,200</span>
+    </div>
+
+    <div class="transaction">
+        <span>Mobile Recharge</span>
+        <span class="debit">- ₹299</span>
+    </div>
+
+    <div class="transaction">
+        <span>Money Received</span>
+        <span class="credit">+ ₹5,000</span>
+    </div>
+
+</div>
+
+</div>
+<script>
+if (localStorage.getItem("loggedIn") !== "true") {
+    alert("Please login first! 🔐");
+    window.location.href = "login.html";
+}
+</script
+<script>
+function logout() {
+    localStorage.removeItem("loggedIn");
+}
+</script>
+<script>
+let balance = localStorage.getItem("balance");
+
+if (balance === null) {
+    balance = 25000;
+    localStorage.setItem("balance", balance);
+}
+
+document.getElementById("balance").textContent =
+    "₹" + Number(balance).toLocaleString("en-IN");
+</script>
+<script>
+const username = localStorage.getItem("currentUser");
+const accounts = JSON.parse(localStorage.getItem("demoAccounts") || "[]");
+const account = accounts.find(user => user.username === username);
+
+if (account) {
+    document.getElementById("customerName").textContent = account.fullName;
+}
+</script>
+</body>
+</html>

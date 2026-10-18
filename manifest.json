@@ -1,0 +1,11 @@
+{
+  "name": "B5K Bank",
+  "short_name": "B5K",
+  "description": "B5K Bank Demo Application",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#00C853"
+}

@@ -1,0 +1,292 @@
+/* B5K BANK — Floating Logo Background */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f5ff, #ffffff, #dceaff);
+    position: relative;
+    isolation: isolate;
+    overflow-x: hidden;
+}
+
+/* Giant floating B5K background logo */
+body::before {
+    content: "B5K";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    font-family: Arial Black, Arial, sans-serif;
+    font-size: clamp(180px, 48vw, 600px);
+    font-weight: 900;
+    letter-spacing: 8px;
+    color: rgba(20, 80, 140, 0.12);
+    white-space: nowrap;
+    pointer-events: none;
+    animation: floatingLogo 8s ease-in-out infinite;
+}
+
+/* Soft floating light */
+body::after {
+    content: "";
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    top: 10%;
+    right: -80px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(80, 160, 255, 0.20),
+        transparent 70%
+    );
+    z-index: -1;
+    pointer-events: none;
+    animation: floatingLight 10s ease-in-out infinite alternate;
+}
+
+@keyframes floatingLogo {
+    0%, 100% {
+        translate: 0 0;
+    }
+    50% {
+        translate: 0 -18px;
+    }
+}
+
+@keyframes floatingLight {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(-70px, 100px);
+    }
+}
+
+/* Login card */
+.login-box {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    width: 90%;
+    max-width: 400px;
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 15px 45px rgba(20, 60, 100, 0.15);
+}
+
+.login-box h1 {
+    text-align: center;
+    color: #174a7e;
+    margin-bottom: 12px;
+}
+
+.login-box p {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #5e6c7b;
+    line-height: 1.5;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #26384b;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #cbd6e2;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #fff;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3785cf;
+    box-shadow: 0 0 0 3px rgba(55, 133, 207, 0.12);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #247ac0, #174a7e);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(23, 74, 126, 0.25);
+}
+
+.links {
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+.links a,
+.back {
+    color: #176bb0;
+    text-decoration: none;
+}
+
+.links a:hover,
+.back:hover {
+    text-decoration: underline;
+}
+
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::before,
+    body::after {
+        animation: none;
+    }
+}/* Make the B5K background logo more subtle */
+body::before {
+    color: rgba(20, 80, 140, 0.045) !important;
+    font-size: clamp(180px, 48vw, 600px);
+}
+
+/* Remove backgrounds from username/password labels */
+label {
+    background: transparent !important;
+    color: #26384b;
+    display: block;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+/* Keep the login card slightly transparent */
+.login-box {
+    background: rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+/* Make the B5K background logo subtle */
+body::before {
+    opacity: 0.08 !important;
+    color: #2878b8 !important;
+}
+
+/* Remove the white login card background */
+.login-box {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Remove backgrounds from labels */
+label {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
+/* B5K Bright Gold Background Logo */
+body::before {
+    content: "B5K" !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+    font-size: clamp(180px, 48vw, 600px) !important;
+    font-weight: 900 !important;
+    font-family: Arial, sans-serif !important;
+
+    color: #FFD700 !important;
+    opacity: 0.22 !important;
+
+    text-shadow:
+        0 0 15px rgba(255, 215, 0, 0.5),
+        0 0 35px rgba(255, 190, 0, 0.3) !important;
+
+    pointer-events: none !important;
+    z-index: -1 !important;
+    white-space: nowrap !important;
+
+    animation: b5kFloat 5s ease-in-out infinite !important;
+}
+
+/* Gentle floating animation */
+@keyframes b5kFloat {
+    0%, 100% {
+        margin-top: 0;
+    }
+    50% {
+        margin-top: -18px;
+    }
+}
+/* B5K Emerald Green Background Logo */
+body::before {
+    content: "B5K" !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+    font-family: Arial, sans-serif !important;
+    font-size: clamp(180px, 48vw, 600px) !important;
+    font-weight: 900 !important;
+
+    color: #00C853 !important;
+    opacity: 0.16 !important;
+
+    text-shadow:
+        0 0 15px rgba(0, 200, 83, 0.25),
+        0 0 35px rgba(0, 200, 83, 0.15) !important;
+
+    pointer-events: none !important;
+    z-index: 0 !important;
+    white-space: nowrap !important;
+
+    animation: b5kGreenFloat 5s ease-in-out infinite !important;
+}
+
+/* Floating effect */
+@keyframes b5kGreenFloat {
+    0%, 100% {
+        margin-top: 0;
+    }
+    50% {
+        margin-top: -15px;
+    }
+}
+
+/* Keep the login form above the logo */
+.login-box {
+    position: relative;
+    z-index: 1;
+}

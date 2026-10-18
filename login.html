@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B5K Bank - Login</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <h1>🏦 B5K Bank</h1>
+        <p>Login to your online banking account</p>
+
+        <form>
+            <label>Customer ID</label>
+            <input type="text" placeholder="Enter Customer ID">
+
+            <label>Password</label>
+            <input type="password" placeholder="Enter Password">
+
+            <button type="submit" class="login-btn">
+    Login
+</button>
+        </form>
+
+        <div class="links">
+            <a href="forgot.html">Forgot Password?</a>
+            <br><br>
+            <a href="register.html">Create New Account</a>
+        </div>
+
+        <a href="index.html" class="back">← Back to Home</a>
+
+    </div>
+
+</body>
+<script>
+document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const inputs = this.querySelectorAll("input");
+
+    const username = inputs[0].value.trim().toLowerCase();
+    const password = inputs[1].value;
+
+    const accounts = JSON.parse(
+        localStorage.getItem("demoAccounts") || "[]"
+    );
+
+    const account = accounts.find(function(user) {
+        return user.username === username &&
+               user.password === password;
+    });
+
+    if (account) {
+        localStorage.setItem("loggedIn", "true");
+        localStorage.setItem("currentUser", account.username);
+
+        alert("Login successful! Welcome to B5K Bank!");
+
+        window.location.href = "dashboard.html";
+    } else {
+        alert("Invalid username or password!");
+    }
+});
+</script>
+
+</body>
+</html>

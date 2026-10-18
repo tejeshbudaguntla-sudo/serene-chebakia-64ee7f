@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B5K Bank</title>
+    <link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #123c69;
+            color: white;
+            padding: 18px;
+            text-align: center;
+        }
+
+        header h2 {
+            margin-bottom: 12px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 70px 20px;
+            background: white;
+        }
+
+        .hero h1 {
+            color: #123c69;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 5px;
+            background: #123c69;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .register {
+            background: #198754;
+        }
+
+        .services {
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .services h2 {
+            color: #123c69;
+            margin-bottom: 25px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 220px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px #ccc;
+        }
+
+        .card h3 {
+            color: #123c69;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #123c69;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>🏦 B5K Bank</h2>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to B5K Bank</h1>
+
+        <p>Secure, Simple & Convenient Online Banking</p>
+
+        <a href="login.html" class="btn">Login</a>
+         <a href="register.html" class="btn register">Register</a>
+    </section>
+
+    <section class="services" id="services">
+
+        <h2>Our Banking Services</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>💰 Money Transfer</h3>
+                <p>Transfer money quickly and easily.</p>
+            </div>
+
+            <div class="card">
+                <h3>💳 Bill Payment</h3>
+                <p>Pay your bills online.</p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Account</h3>
+                <p>Check your balance and transactions.</p>
+            </div>
+
+            <div class="card">
+                <h3>🔒 Security</h3>
+                <p>Safe and secure online banking.</p>
+            </div>
+
+        </div>
+    </section>          
+
+    <footer>
+        <p>© 2026 B5K Bank</p>
+    </footer>
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+        navigator.serviceWorker.register("./service-worker.js")
+            .then(function () {
+                console.log("B5K Bank service worker registered!");
+            })
+            .catch(function (error) {
+                console.error("Service worker registration failed:", error);
+            });
+    });
+}
+</script>
+</body>
+</html>
